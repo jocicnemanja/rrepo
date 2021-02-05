@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import './header.css';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
-import {log} from "util";
 
 export interface HeaderProps {
     title: string
