@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./header.css";
-import MenuIcon from "@material-ui/icons/Menu";
-import CloseIcon from "@material-ui/icons/Close";
+import "./header.scss";
 
 export interface HeaderProps {
   title: string;
@@ -11,6 +9,7 @@ export interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ title, logoSVG, children }) => {
   const [sideNav, setSideNav] = useState<HTMLElement | null>(null);
+
   useEffect(() => {
     setSideNav(document.getElementById("basic-mobile-side-bar"));
     return () => {
@@ -28,6 +27,32 @@ export const Header: React.FC<HeaderProps> = ({ title, logoSVG, children }) => {
       sideNav.style.width = "0";
     }
   };
+  const closeIconSVG = () => (
+    <svg
+      onClick={closeMobileMenu}
+      width="24"
+      height="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z" />
+    </svg>
+  );
+
+  const menuIconSVG = () => (
+    <svg
+      onClick={openMobileMenu}
+      width="24"
+      height="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M24 18v1h-24v-1h24zm0-6v1h-24v-1h24zm0-6v1h-24v-1h24z"
+        fill="#1040e2"
+      />
+      <path d="M24 19h-24v-1h24v1zm0-6h-24v-1h24v1zm0-6h-24v-1h24v1z" />
+    </svg>
+  );
+
   return (
     <>
       <header>
@@ -36,10 +61,7 @@ export const Header: React.FC<HeaderProps> = ({ title, logoSVG, children }) => {
             {logoSVG}
             <h1>{title}</h1>
           </div>
-          <div className="menu-icon">
-            <MenuIcon onClick={openMobileMenu} />
-          </div>
-
+          <div className="menu-icon">{menuIconSVG()}</div>
           <div className="header-children">{children}</div>
         </div>
       </header>
@@ -47,9 +69,7 @@ export const Header: React.FC<HeaderProps> = ({ title, logoSVG, children }) => {
         <header>
           <div className="wrapper">
             <div />
-            <CloseIcon className="close-icon" onClick={closeMobileMenu}>
-              {" "}
-            </CloseIcon>
+            {closeIconSVG()}
           </div>
         </header>
         <div className="side-nav-children">{children}</div>

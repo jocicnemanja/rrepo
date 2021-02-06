@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from "../../components/Header/Header";
-import "./page.css";
+import "./page.scss";
 
 const Page: React.FC = () => {
   const createLogoSVG = () => (
