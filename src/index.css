@@ -11,16 +11,3 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-#mobile-side-nav {
-    height: 100vh;
-    width: 0;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    background-color: #fff;
-    overflow-x: hidden;
-    transition: width 0.5s;
-    padding-top: 60px;
-}
